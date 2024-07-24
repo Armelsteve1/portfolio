@@ -10,7 +10,10 @@ import {
   Subtitle,
   Experience,
   MenuButton,
-  MobileNav,
+  NavLinkMobile,
+  NavHeader,
+  CloseButton,
+  MobileNav as StyledMobileNav,
 } from './HeaderStyles';
 import ScrollPrompt from './ScrollPrompt';
 
@@ -33,9 +36,9 @@ const Header: React.FC = () => {
     from: { opacity: 0 },
     delay: 600,
   });
-  const menuProps = useSpring({
-    maxHeight: isMenuOpen ? '200px' : '0px',
-    opacity: isMenuOpen ? 1 : 0,
+
+  const menuAnimation = useSpring({
+    transform: isMenuOpen ? 'translateX(0%)' : 'translateX(100%)',
   });
 
   const toggleMenu = () => setMenuOpen(!isMenuOpen);
@@ -67,19 +70,24 @@ const Header: React.FC = () => {
           <NavLink href="#projects">Projets</NavLink>
           <NavLink href="#contact">Contact</NavLink>
         </Nav>
-        <MenuButton onClick={toggleMenu}>☰</MenuButton>
+        {!isMenuOpen && <MenuButton onClick={toggleMenu}>Menu ☰</MenuButton>}
       </HeaderTop>
-      <MobileNav style={menuProps} ref={menuRef}>
-        <NavLink href="#about" onClick={() => setMenuOpen(false)}>
+      <StyledMobileNav style={menuAnimation} ref={menuRef}>
+        <NavHeader>
+          <Logo src="/aso_logo.png" alt="Logo" />
+          <CloseButton onClick={toggleMenu}>✕</CloseButton>
+        </NavHeader>
+        <NavLinkMobile href="#about" onClick={() => setMenuOpen(false)}>
           À propos
-        </NavLink>
-        <NavLink href="#projects" onClick={() => setMenuOpen(false)}>
+        </NavLinkMobile>
+        <NavLinkMobile href="#projects" onClick={() => setMenuOpen(false)}>
           Projets
-        </NavLink>
-        <NavLink href="#contact" onClick={() => setMenuOpen(false)}>
+        </NavLinkMobile>
+        <NavLinkMobile href="#contact" onClick={() => setMenuOpen(false)}>
           Contact
-        </NavLink>
-      </MobileNav>
+        </NavLinkMobile>
+        {/* Add other menu items or content as needed */}
+      </StyledMobileNav>
       <Title style={titleProps}>DÉVELOPPEUR</Title>
       <Subtitle style={subtitleProps}>FULLSTACK</Subtitle>
       <Experience style={experienceProps}>
