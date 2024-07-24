@@ -51,7 +51,6 @@ export const HeaderTop = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0 2rem;
   position: absolute;
   top: 0;
   left: 0;
@@ -80,7 +79,19 @@ export const NavLink = styled.a`
     color: #6a0dad;
   }
 `;
+// Pictogramme
+export const Picto = styled.img`
+  margin-right: 15px;
+  height: 90px;
 
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+export const Highlight = styled.span`
+  color: #ffffff;
+  font-weight: bold;
+`;
 // Title and Subtitle styles
 export const Title = styled(animated.h1)`
   font-size: 8vw;
@@ -111,8 +122,8 @@ export const Subtitle = styled(animated.h1)`
 
 // Experience text
 export const Experience = styled(animated.p)`
-  font-size: 2vw;
-  margin-top: 1rem;
+  font-size: 3vw;
+  margin-top: 4rem;
   color: #888;
   position: relative;
   @media (max-width: 768px) {
@@ -131,7 +142,7 @@ export const MenuButton = styled.button`
   color: #fff;
   font-size: 2rem;
   cursor: pointer;
-  z-index: 1000; // Ensure it's above other elements
+  z-index: 1000;
 `;
 
 // Mobile navigation

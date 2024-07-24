@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import React, { useState, useEffect, useRef } from 'react';
 import { useSpring } from 'react-spring';
 import {
@@ -9,6 +10,7 @@ import {
   Title,
   Subtitle,
   Experience,
+  Highlight,
   MenuButton,
   NavLinkMobile,
   NavHeader,
@@ -16,6 +18,15 @@ import {
   MobileNav as StyledMobileNav,
 } from './HeaderStyles';
 import ScrollPrompt from './ScrollPrompt';
+
+const Picto = styled.img`
+  margin-right: 5px;
+  height: 90px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
 
 const Header: React.FC = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -86,12 +97,14 @@ const Header: React.FC = () => {
         <NavLinkMobile href="#contact" onClick={() => setMenuOpen(false)}>
           Contact
         </NavLinkMobile>
-        {/* Add other menu items or content as needed */}
       </StyledMobileNav>
-      <Title style={titleProps}>DÉVELOPPEUR</Title>
+      <Title style={titleProps}>
+        <Picto src="../leftPillule.svg" alt="Picto" />
+        DÉVELOPPEUR
+      </Title>
       <Subtitle style={subtitleProps}>FULLSTACK</Subtitle>
       <Experience style={experienceProps}>
-        UNE EXPERTISE DE + 4 ANS DANS LE DEV
+        UNE EXPERTISE DE <Highlight>+ 4 ANS DANS LE DEV</Highlight>
       </Experience>
       <ScrollPrompt />
     </HeaderContainer>
