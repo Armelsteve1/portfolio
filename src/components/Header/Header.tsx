@@ -1,5 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import styled from 'styled-components';
+import { useState, useRef, useEffect } from 'react';
 import { useSpring } from 'react-spring';
+import { motion } from 'framer-motion';
 import {
   HeaderContainer,
   HeaderTop,
@@ -9,14 +11,48 @@ import {
   Title,
   Subtitle,
   Experience,
+  Highlight,
   MenuButton,
-  MobileNav,
+  NavLinkMobile,
+  NavHeader,
+  CloseButton,
+  MobileNav as StyledMobileNav,
 } from './HeaderStyles';
 import ScrollPrompt from './ScrollPrompt';
 
-const Header: React.FC = () => {
+const Picto = styled.img`
+  margin-right: 5px;
+  height: 90px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const mobileMenuVariants = {
+  open: {
+    x: 0,
+    transition: {
+      type: 'spring',
+      stiffness: 50,
+      damping: 20,
+    },
+  },
+  closed: {
+    x: '100%',
+    transition: {
+      type: 'spring',
+      stiffness: 300,
+      damping: 30,
+    },
+  },
+};
+
+const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  const toggleMenu = () => setMenuOpen(!isMenuOpen);
 
   const titleProps = useSpring({
     opacity: 1,
@@ -33,13 +69,6 @@ const Header: React.FC = () => {
     from: { opacity: 0 },
     delay: 600,
   });
-  const menuProps = useSpring({
-    maxHeight: isMenuOpen ? '200px' : '0px',
-    opacity: isMenuOpen ? 1 : 0,
-  });
-
-  const toggleMenu = () => setMenuOpen(!isMenuOpen);
-
   const handleClickOutside = (event: MouseEvent) => {
     if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
       setMenuOpen(false);
@@ -67,23 +96,36 @@ const Header: React.FC = () => {
           <NavLink href="#projects">Projets</NavLink>
           <NavLink href="#contact">Contact</NavLink>
         </Nav>
-        <MenuButton onClick={toggleMenu}>☰</MenuButton>
+        {!isMenuOpen && <MenuButton onClick={toggleMenu}>Menu ☰</MenuButton>}
       </HeaderTop>
-      <MobileNav style={menuProps} ref={menuRef}>
-        <NavLink href="#about" onClick={() => setMenuOpen(false)}>
+      <StyledMobileNav
+        as={motion.div}
+        variants={mobileMenuVariants}
+        initial="closed"
+        animate={isMenuOpen ? 'open' : 'closed'}
+        ref={menuRef}
+      >
+        <NavHeader>
+          <Logo src="/aso_logo.png" alt="Logo" />
+          <CloseButton onClick={toggleMenu}>✕</CloseButton>
+        </NavHeader>
+        <NavLinkMobile href="#about" onClick={() => setMenuOpen(false)}>
           À propos
-        </NavLink>
-        <NavLink href="#projects" onClick={() => setMenuOpen(false)}>
+        </NavLinkMobile>
+        <NavLinkMobile href="#projects" onClick={() => setMenuOpen(false)}>
           Projets
-        </NavLink>
-        <NavLink href="#contact" onClick={() => setMenuOpen(false)}>
+        </NavLinkMobile>
+        <NavLinkMobile href="#contact" onClick={() => setMenuOpen(false)}>
           Contact
-        </NavLink>
-      </MobileNav>
-      <Title style={titleProps}>DÉVELOPPEUR</Title>
+        </NavLinkMobile>
+      </StyledMobileNav>
+      <Title style={titleProps}>
+        <Picto src="../leftPillule.svg" alt="Picto" />
+        DÉVELOPPEUR
+      </Title>
       <Subtitle style={subtitleProps}>FULLSTACK</Subtitle>
       <Experience style={experienceProps}>
-        UNE EXPERTISE DE + 4 ANS DANS LE DEV
+        UNE EXPERTISE DE <Highlight>+ 4 ANS DANS LE DEV</Highlight>
       </Experience>
       <ScrollPrompt />
     </HeaderContainer>

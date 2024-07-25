@@ -52,3 +52,4 @@ TestResults.xml
 *.tmp
 *.swp
 *.swo
+.vercel
