@@ -3,8 +3,6 @@ import Navbar from '../Navbar';
 import styled from 'styled-components';
 import TechnologyCard from './TechnologyCard';
 import { Technology } from './types';
-import { motion } from 'framer-motion';
-import AboutAnimation from './AboutAnimation';
 import CardComponent from './CardComponent';
 import ScrollSection from './ScrollSection';
 

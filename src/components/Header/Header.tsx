@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useSpring } from 'react-spring';
 import { motion } from 'framer-motion';
 import {
@@ -48,7 +48,7 @@ const mobileMenuVariants = {
   },
 };
 
-const Header: React.FC = () => {
+const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -69,11 +69,6 @@ const Header: React.FC = () => {
     from: { opacity: 0 },
     delay: 600,
   });
-
-  const menuAnimation = useSpring({
-    transform: isMenuOpen ? 'translateX(0%)' : 'translateX(100%)',
-  });
-
   const handleClickOutside = (event: MouseEvent) => {
     if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
       setMenuOpen(false);
