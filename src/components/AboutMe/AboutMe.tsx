@@ -1,6 +1,12 @@
 import React from 'react';
-import Navbar from './Navbar'; // Assurez-vous que le chemin est correct
+import Navbar from '../Navbar';
 import styled from 'styled-components';
+import TechnologyCard from './TechnologyCard';
+import { Technology } from './types';
+import { motion } from 'framer-motion';
+import AboutAnimation from './AboutAnimation';
+import CardComponent from './CardComponent';
+import ScrollSection from './ScrollSection';
 
 const Section = styled.section`
   position: relative;
@@ -19,14 +25,18 @@ const Header = styled.div`
   margin-bottom: 2rem;
 `;
 
+const Description = styled.p`
+  font-size: 1.5rem;
+  color: #555;
+  margin-bottom: 2rem;
+`;
 const Title = styled.h2`
   font-size: 3rem;
   color: #333;
   font-weight: bold;
 `;
-
 const Highlight = styled.span`
-  color: #6200ea; /* Purple color for highlights */
+  color: #6200ea;
   font-size: 3.2rem;
 `;
 
@@ -37,17 +47,22 @@ const Content = styled.div`
   align-items: flex-start;
   width: 100%;
   max-width: 1200px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
-const TextSection = styled.div`
+const TextSection = styled.article`
   flex: 2;
   padding-right: 20px;
-`;
 
-const Description = styled.p`
-  font-size: 1.5rem;
-  color: #555;
-  margin-bottom: 2rem;
+  @media (max-width: 768px) {
+    padding-right: 0;
+    margin-bottom: 20px;
+    text-align: center;
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -62,63 +77,63 @@ const ImageContainer = styled.div`
     max-width: 100%;
     height: auto;
   }
+
+  @media (max-width: 768px) {
+    order: -1; /* Place l'image en haut */
+    margin-bottom: 20px;
+  }
 `;
 
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-  margin-top: 3rem;
+  gap: 0px;
+  margin-top: 0rem;
   width: 100%;
   max-width: 1200px;
 `;
 
-const Card = styled.div`
-  background: #1a1a1a;
-  border-radius: 15px;
-  padding: 20px;
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  transition: transform 0.3s ease;
-  cursor: pointer;
-
-  &:hover {
-    transform: translateY(-10px);
-  }
-
-  img {
-    width: 60px;
-    margin-bottom: 1rem;
-  }
-
-  h3 {
-    margin: 1rem 0;
-    font-size: 1.5rem;
-  }
-
-  p {
-    font-size: 1rem;
-    color: #ccc;
-  }
-`;
-
 const AboutMe: React.FC = () => {
-  const cards = [
+  const technologies: Technology[] = [
     {
-      title: 'Master II',
-      description: 'Formation en développement web avancé.',
-      image: '../path/to/image1.png', // Remplacez par le chemin correct
+      name: 'JavaScript',
+      imageUrl:
+        'https://www.freepnglogos.com/uploads/javascript-png/javascript-logo-transparent-logo-javascript-images-3.png',
     },
     {
-      title: "+3 ans d'exp.",
-      description: 'Expérience professionnelle en développement web.',
-      image: '../path/to/image2.png', // Remplacez par le chemin correct
+      name: 'Java',
+      imageUrl:
+        'https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg',
     },
     {
-      title: 'JavaScript',
-      description: 'Mon domaine de prédilection.',
-      image: '../path/to/image3.png', // Remplacez par le chemin correct
+      name: 'ReactJS',
+      imageUrl:
+        'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg',
+    },
+    {
+      name: 'NodeJS',
+      imageUrl:
+        'https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg',
+    },
+    {
+      name: 'TypeScript',
+      imageUrl:
+        'https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg',
+    },
+    {
+      name: 'AWS',
+      imageUrl:
+        'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg',
+    },
+    {
+      name: 'Docker',
+      imageUrl:
+        'https://upload.wikimedia.org/wikipedia/commons/4/4e/Docker_%28container_engine%29_logo.svg',
+    },
+    {
+      name: 'NextJS',
+      imageUrl:
+        'https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg',
     },
   ];
 
@@ -156,16 +171,18 @@ const AboutMe: React.FC = () => {
             <img src="../aso_logo.png" alt="A propos de moi" />
           </ImageContainer>
         </Content>
+        <CardComponent />
         <Grid>
-          {cards.map((card, index) => (
-            <Card key={index}>
-              <img src={card.image} alt={card.title} />
-              <h3>{card.title}</h3>
-              <p>{card.description}</p>
-            </Card>
+          {technologies.map((tech) => (
+            <TechnologyCard
+              key={tech.name}
+              name={tech.name}
+              imageUrl={tech.imageUrl}
+            />
           ))}
         </Grid>
       </Section>
+      <ScrollSection />
     </>
   );
 };

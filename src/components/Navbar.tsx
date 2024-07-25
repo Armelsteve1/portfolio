@@ -112,16 +112,18 @@ const Navbar: React.FC = () => {
         <img src="../aso_logo.png" alt="Logo" style={{ height: '90px' }} />
       </Logo>
       <NavLinks>
-        <a href="/home" className="active">
+        <a href="./Header/Header" className="active">
           Accueil
         </a>
-        <a href="/about">À propos</a>
+        <a href="/AboutMe">À propos</a>
         <a href="/projects">Projets</a>
         <a href="/contact">Contact</a>
       </NavLinks>
       <FooterInfo>
         ©Website coded by
-        <a href="https://your-link.com">Armel Steve</a>
+        <a href="https://www.linkedin.com/in/armel-steve-ouetchoua-a1467b225/">
+          Armel Steve
+        </a>
       </FooterInfo>
     </NavbarContainer>
   );

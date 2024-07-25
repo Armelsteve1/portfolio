@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useSpring } from 'react-spring';
+import { motion } from 'framer-motion';
 import {
   HeaderContainer,
   HeaderTop,
@@ -28,9 +29,30 @@ const Picto = styled.img`
   }
 `;
 
+const mobileMenuVariants = {
+  open: {
+    x: 0,
+    transition: {
+      type: 'spring',
+      stiffness: 50,
+      damping: 20,
+    },
+  },
+  closed: {
+    x: '100%',
+    transition: {
+      type: 'spring',
+      stiffness: 300,
+      damping: 30,
+    },
+  },
+};
+
 const Header: React.FC = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  const toggleMenu = () => setMenuOpen(!isMenuOpen);
 
   const titleProps = useSpring({
     opacity: 1,
@@ -51,8 +73,6 @@ const Header: React.FC = () => {
   const menuAnimation = useSpring({
     transform: isMenuOpen ? 'translateX(0%)' : 'translateX(100%)',
   });
-
-  const toggleMenu = () => setMenuOpen(!isMenuOpen);
 
   const handleClickOutside = (event: MouseEvent) => {
     if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -83,7 +103,13 @@ const Header: React.FC = () => {
         </Nav>
         {!isMenuOpen && <MenuButton onClick={toggleMenu}>Menu ☰</MenuButton>}
       </HeaderTop>
-      <StyledMobileNav style={menuAnimation} ref={menuRef}>
+      <StyledMobileNav
+        as={motion.div}
+        variants={mobileMenuVariants}
+        initial="closed"
+        animate={isMenuOpen ? 'open' : 'closed'}
+        ref={menuRef}
+      >
         <NavHeader>
           <Logo src="/aso_logo.png" alt="Logo" />
           <CloseButton onClick={toggleMenu}>✕</CloseButton>
