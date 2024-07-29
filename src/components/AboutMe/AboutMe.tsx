@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from '../Navbar';
 import styled from 'styled-components';
 import TechnologyCard from './TechnologyCard';
 import { Technology } from './types';
@@ -137,7 +136,6 @@ const AboutMe: React.FC = () => {
 
   return (
     <>
-      <Navbar />
       <Section>
         <Header>
           <Title>

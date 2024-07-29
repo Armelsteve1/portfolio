@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useSpring, animated } from 'react-spring';
 import styled from 'styled-components';
 
-const NavbarContainer = styled(animated.div)`
+const NavbarContainer = styled.div`
   position: fixed;
   bottom: 20px;
-  left: 16%;
+  left: 50%;
   transform: translateX(-50%);
-  width: 65%;
+  width: 60%;
   max-width: 1000px;
   background: rgba(26, 26, 26, 0.7);
   backdrop-filter: blur(12px);
@@ -21,7 +20,7 @@ const NavbarContainer = styled(animated.div)`
   border: 1px solid #333;
 
   @media (max-width: 768px) {
-    display: none; /* Masquer la navbar sur les écrans de moins de 768px */
+    display: none;
   }
 `;
 
@@ -37,21 +36,19 @@ const NavLinks = styled.div`
     font-size: 1rem;
     display: flex;
     align-items: center;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition:
+      background-color 0.3s,
+      color 0.3s;
 
     &.active {
+      background-color: #4d00ca;
       color: #fff;
-      background: #4d00ca;
-      padding: 27px 20px;
-      border-radius: 8px;
     }
 
     &:hover {
       color: #ccc;
-    }
-
-    img {
-      margin-right: 8px;
-      height: 20px;
     }
   }
 `;
@@ -82,15 +79,43 @@ const FooterInfo = styled.div`
 `;
 
 const Navbar: React.FC = () => {
-  const [showNavbar, setShowNavbar] = useState(false);
+  const [activeLink, setActiveLink] = useState<string>('header');
+  const [showNavbar, setShowNavbar] = useState(true);
+
+  const handleLinkClick = (
+    link: string,
+    event: React.MouseEvent<HTMLAnchorElement>
+  ) => {
+    event.preventDefault();
+    const element = document.getElementById(link);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setActiveLink(link);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setShowNavbar(true);
-      } else {
-        setShowNavbar(false);
+      const scrollY = window.scrollY;
+      let currentSection = 'header';
+
+      if (scrollY > 100) {
+        currentSection = 'about';
       }
+
+      const aboutSection = document.getElementById('about');
+      if (
+        aboutSection &&
+        scrollY > aboutSection.offsetTop + aboutSection.clientHeight - 100
+      ) {
+        currentSection = 'projects';
+      }
+
+      if (currentSection !== activeLink) {
+        setActiveLink(currentSection);
+      }
+
+      setShowNavbar(scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -98,26 +123,35 @@ const Navbar: React.FC = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
-
-  const navbarProps = useSpring({
-    opacity: showNavbar ? 1 : 0,
-    transform: showNavbar ? 'translateY(0%)' : 'translateY(100%)',
-    config: { tension: 250, friction: 20 },
-  });
+  }, [activeLink]);
 
   return (
-    <NavbarContainer style={navbarProps}>
+    <NavbarContainer style={{ opacity: showNavbar ? 1 : 0 }}>
       <Logo>
         <img src="../aso_logo.png" alt="Logo" style={{ height: '90px' }} />
       </Logo>
       <NavLinks>
-        <a href="./Header/Header" className="active">
+        <a
+          href="#header"
+          className={`nav-link ${activeLink === 'header' ? 'active' : ''}`}
+          onClick={(e) => handleLinkClick('header', e)}
+        >
           Accueil
         </a>
-        <a href="/AboutMe">À propos</a>
-        <a href="/projects">Projets</a>
-        <a href="/contact">Contact</a>
+        <a
+          href="#about"
+          className={`nav-link ${activeLink === 'about' ? 'active' : ''}`}
+          onClick={(e) => handleLinkClick('about', e)}
+        >
+          À propos
+        </a>
+        <a
+          href="#projects"
+          className={`nav-link ${activeLink === 'projects' ? 'active' : ''}`}
+          onClick={(e) => handleLinkClick('projects', e)}
+        >
+          Projets
+        </a>
       </NavLinks>
       <FooterInfo>
         ©Website coded by

@@ -94,7 +94,12 @@ const Header = () => {
         <Nav>
           <NavLink href="#about">À propos</NavLink>
           <NavLink href="#projects">Projets</NavLink>
-          <NavLink href="#contact">Contact</NavLink>
+          <NavLink
+            href="/Cv_Armel_Steve_OUETCHOUA.pdf"
+            download="Cv_Armel_Steve_OUETCHOUA.pdf"
+          >
+            CV
+          </NavLink>
         </Nav>
         {!isMenuOpen && <MenuButton onClick={toggleMenu}>Menu ☰</MenuButton>}
       </HeaderTop>
@@ -115,8 +120,11 @@ const Header = () => {
         <NavLinkMobile href="#projects" onClick={() => setMenuOpen(false)}>
           Projets
         </NavLinkMobile>
-        <NavLinkMobile href="#contact" onClick={() => setMenuOpen(false)}>
-          Contact
+        <NavLinkMobile
+          href="/Cv_Armel_Steve_OUETCHOUA.pdf"
+          onClick={() => setMenuOpen(false)}
+        >
+          CV
         </NavLinkMobile>
       </StyledMobileNav>
       <Title style={titleProps}>

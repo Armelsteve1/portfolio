@@ -26,25 +26,25 @@ const Card = styled(motion.div)`
     transform 0.3s ease-in-out,
     box-shadow 0.3s ease-in-out;
   color: #fff;
+
   &:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
   }
 `;
 
-const PinIcon = styled.div`
+const PinIcon = styled(motion.div)`
   position: absolute;
   top: 10px;
   right: 10px;
   width: 24px;
   height: 24px;
-  background-image: url('/path/to/pin-icon.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 `;
 
-const Text = styled.h3`
+const Text = styled(motion.h3)`
   margin: 0;
   font-size: 1.5rem;
   color: #ffffff;
@@ -65,9 +65,16 @@ const CardComponent = () => (
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: index * 0.3, duration: 0.5 }}
+        whileHover={{ scale: 1.1 }}
       >
-        <PinIcon style={{ backgroundImage: `url(${card.icon})` }} />
-        <Text>{card.text}</Text>
+        <PinIcon
+          style={{ backgroundImage: `url(${card.icon})` }}
+          whileHover={{ scale: 1.2 }}
+          transition={{ duration: 0.3 }}
+        />
+        <Text whileHover={{ scale: 1.2 }} transition={{ duration: 0.3 }}>
+          {card.text}
+        </Text>
       </Card>
     ))}
   </CardGrid>

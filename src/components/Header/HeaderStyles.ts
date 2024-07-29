@@ -243,7 +243,7 @@ export const DecorativeElementsContainer = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  pointer-events: none; // Prevent interference with interactions
+  pointer-events: none;
 `;
 
 export const DecorativeLine = styled.div`

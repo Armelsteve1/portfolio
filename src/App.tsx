@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import AboutMe from './components/AboutMe/AboutMe';
 import Projects from './components/Projects';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
 import GlobalStyle from './components/GlobalStyle';
 import Header from './components/Header/Header';
+import Navbar from './components/Navbar';
 
 const Container = styled.div`
   display: flex;
@@ -19,7 +19,6 @@ const Container = styled.div`
 
 const MainContent = styled.main`
   width: 100%;
-  padding: 2rem;
   text-align: center;
   flex: 1;
 `;
@@ -28,12 +27,18 @@ const App: React.FC = () => {
   return (
     <>
       <GlobalStyle />
+      <Navbar />
       <Container>
-        <Header />
         <MainContent>
-          <AboutMe />
-          <Projects />
-          <Contact />
+          <section id="header">
+            <Header />
+          </section>
+          <section id="about">
+            <AboutMe />
+          </section>
+          <section id="projects">
+            <Projects />
+          </section>
         </MainContent>
         <Footer />
       </Container>
