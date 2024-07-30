@@ -13,6 +13,10 @@ export const FooterContainer = styled.footer`
   position: relative;
   font-family: 'Poppins', sans-serif;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    padding: 10px 0;
+  }
 `;
 
 export const BackgroundCircle = styled.div`
@@ -20,8 +24,8 @@ export const BackgroundCircle = styled.div`
   top: -5%;
   left: 50%;
   transform: translateX(-50%);
-  width: 400px;
-  height: 400px;
+  width: 300px;
+  height: 300px;
   background: radial-gradient(
     circle,
     rgba(106, 13, 173, 0.8) 0%,
@@ -29,6 +33,12 @@ export const BackgroundCircle = styled.div`
   );
   border-radius: 50%;
   z-index: 0;
+
+  @media (max-width: 768px) {
+    width: 200px;
+    height: 200px;
+    padding: 40px 0;
+  }
 `;
 
 export const FooterTop = styled.div`
@@ -68,30 +78,35 @@ export const FooterTop = styled.div`
 `;
 
 export const FooterCenter = styled.div`
-  position: relative;
   z-index: 1;
-  margin: 292px 0;
+  margin: 100px 0;
 
   .center-logo {
     display: flex;
     align-items: center;
-    font-size: 48px;
-    z-index: 5;
+    font-size: 36px;
     color: #fff;
-    margin-top: -71px;
 
     .dot {
       color: #6a0dad;
-      font-size: 150px;
+      font-size: 100px;
       font-weight: bold;
       margin-right: 10px;
-      margin-top: -75px;
+      margin-top: -50px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 24px;
+
+      .dot {
+        font-size: 60px;
+        margin-top: -30px;
+      }
     }
   }
 `;
 
 export const ContactText = styled.div`
-  position: relative;
   z-index: 1;
   font-size: 18px;
   color: #bbb;
@@ -99,6 +114,10 @@ export const ContactText = styled.div`
 
   p {
     margin: 5px 0;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 16px;
   }
 `;
 
@@ -116,13 +135,17 @@ export const CurvedBackground = styled.div`
   color: #fff;
   flex-direction: column;
   padding-bottom: 40px;
+
+  @media (max-width: 768px) {
+    height: 200px;
+    padding-bottom: 20px;
+  }
 `;
 
 export const FooterLinkedIn = styled.div`
   position: absolute;
   bottom: 20px;
   right: 20px;
-  text-align: right;
 
   a {
     display: flex;
@@ -138,6 +161,14 @@ export const FooterLinkedIn = styled.div`
 
     &:hover {
       color: #0077b5;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 12px;
+
+      .icon {
+        font-size: 20px;
+      }
     }
   }
 `;

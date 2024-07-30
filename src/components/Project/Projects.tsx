@@ -68,36 +68,36 @@ const Projects = () => {
       <CardContainer id="card-container" onScroll={handleScroll}>
         {projects.map((project, index: number) =>
           index < projects.length - 1 ? (
-              <a
-                href={project.githubLink}
-                target="_blank"
-                rel="noopener noreferrer"
+            <a
+              href={project.githubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Card
+                style={{ backgroundImage: `url(${project.image})` }}
+                onMouseEnter={() => setHoveredCardIndex(index)}
+                onMouseLeave={() => setHoveredCardIndex(null)}
               >
-                <Card
-                  style={{ backgroundImage: `url(${project.image})` }}
-                  onMouseEnter={() => setHoveredCardIndex(index)}
-                  onMouseLeave={() => setHoveredCardIndex(null)}
-                >
-                  {hoveredCardIndex === index && (
-                    <motion.div
-                      className="drag-circle"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      whileHover={{
-                        scale: 1.1,
-                        x: 0,
-                        y: 0,
-                        transition: { type: 'spring', stiffness: 300 },
-                      }}
-                    >
-                      <IconContainer>
-                        <FaGithub size={24} />
-                      </IconContainer>
-                    </motion.div>
-                  )}
-                </Card>
-              </a>
+                {hoveredCardIndex === index && (
+                  <motion.div
+                    className="drag-circle"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    whileHover={{
+                      scale: 1.1,
+                      x: 0,
+                      y: 0,
+                      transition: { type: 'spring', stiffness: 300 },
+                    }}
+                  >
+                    <IconContainer>
+                      <FaGithub size={24} />
+                    </IconContainer>
+                  </motion.div>
+                )}
+              </Card>
+            </a>
           ) : (
             <LockedCard
               key={project.id}

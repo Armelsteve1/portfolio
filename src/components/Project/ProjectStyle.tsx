@@ -87,9 +87,9 @@ export const CardContainer = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
 `;
 
 export const Card = styled.div`
