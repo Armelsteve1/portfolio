@@ -93,7 +93,7 @@ const Header = () => {
         ref={menuRef}
       >
         <NavHeader>
-          <Logo src="/aso_logo.png" alt="Logo" />
+          <Logo src="/aso_logo.webp" alt="Logo" />
           <CloseButton onClick={toggleMenu}>✕</CloseButton>
         </NavHeader>
         <NavLinkMobile href="#about" onClick={() => setMenuOpen(false)}>

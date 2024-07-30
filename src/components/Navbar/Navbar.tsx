@@ -50,7 +50,7 @@ const Navbar = () => {
   return (
     <NavbarContainer style={{ opacity: showNavbar ? 1 : 0 }}>
       <Logo>
-        <img src="../aso_logo.png" alt="Logo" style={{ height: '90px' }} />
+        <img src="../aso_logo.webp" alt="Logo" style={{ height: '90px' }} />
       </Logo>
       <NavLinks>
         <a

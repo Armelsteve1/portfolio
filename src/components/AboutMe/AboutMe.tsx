@@ -170,7 +170,7 @@ const AboutMe: React.FC = () => {
             </Description>
           </TextSection>
           <ImageContainer>
-            <img src="../aso_logo.png" alt="A propos de moi" />
+            <img src="../aso_logo.webp" alt="A propos de moi" />
           </ImageContainer>
         </Content>
         <CardComponent />

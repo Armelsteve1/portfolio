@@ -3,7 +3,7 @@ import { Nav, NavLink, Logo, MenuButton } from '../Header/HeaderStyles';
 const NavbarHeader = ({ isMenuOpen, toggleMenu }: any) => {
   return (
     <>
-      <Logo src="/aso_logo.png" alt="Logo" />
+      <Logo src="/aso_logo.webp" alt="Logo" />
       <Nav>
         <NavLink href="#about">À propos</NavLink>
         <NavLink href="#projects">Projets</NavLink>

@@ -52,9 +52,9 @@ const Text = styled(motion.h3)`
 `;
 
 const cards = [
-  { text: 'Master II', icon: '/aso_logo.png' },
-  { text: "+4 ans d'exp.", icon: '/aso_logo.png' },
-  { text: 'Bonne Pratique', icon: '/aso_logo.png' },
+  { text: 'Master II', icon: '/aso_logo.webp' },
+  { text: "+4 ans d'exp.", icon: '/aso_logo.webp' },
+  { text: 'Bonne Pratique', icon: '/aso_logo.webp' },
 ];
 
 const CardComponent = () => (

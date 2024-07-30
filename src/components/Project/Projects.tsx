@@ -16,25 +16,25 @@ import {
 const projects = [
   {
     id: 2,
-    image: '/BackOfficeView.png',
+    image: '/BackOfficeView.webp',
     link: '#',
     githubLink: 'https://github.com/Armelsteve1/cozco-backoffice-backend.git',
   },
   {
     id: 1,
-    image: '/payfoodWeb.png',
+    image: '/payfoodWeb.webp',
     link: '#',
     githubLink: 'https://github.com/Armelsteve1/Payfood_aws.git',
   },
   {
     id: 3,
-    image: '/portfolio.png',
+    image: '/portfolio.webp',
     link: '#',
     githubLink: 'https://github.com/Armelsteve1/portfolio.git',
   },
   {
     id: 4,
-    image: '/safeGo.png',
+    image: '/safeGo.webp',
     link: '#',
     githubLink: 'https://github.com/Armelsteve1/Safego.git',
   },
