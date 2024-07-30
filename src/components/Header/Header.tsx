@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import { useState, useRef, useEffect } from 'react';
 import { useSpring } from 'react-spring';
 import { motion } from 'framer-motion';
@@ -6,28 +5,18 @@ import {
   HeaderContainer,
   HeaderTop,
   Logo,
-  Nav,
-  NavLink,
   Title,
   Subtitle,
   Experience,
   Highlight,
-  MenuButton,
   NavLinkMobile,
   NavHeader,
   CloseButton,
   MobileNav as StyledMobileNav,
+  Picto,
 } from './HeaderStyles';
 import ScrollPrompt from './ScrollPrompt';
-
-const Picto = styled.img`
-  margin-right: 5px;
-  height: 90px;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
+import NavbarHeader from '../Navbar/NavbarHeader';
 
 const mobileMenuVariants = {
   open: {
@@ -69,6 +58,7 @@ const Header = () => {
     from: { opacity: 0 },
     delay: 600,
   });
+
   const handleClickOutside = (event: MouseEvent) => {
     if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
       setMenuOpen(false);
@@ -77,12 +67,15 @@ const Header = () => {
 
   useEffect(() => {
     if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
       document.addEventListener('mousedown', handleClickOutside);
     } else {
+      document.body.style.overflow = 'auto';
       document.removeEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
+      document.body.style.overflow = 'auto';
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isMenuOpen]);
@@ -90,13 +83,7 @@ const Header = () => {
   return (
     <HeaderContainer>
       <HeaderTop>
-        <Logo src="/aso_logo.png" alt="Logo" />
-        <Nav>
-          <NavLink href="#about">À propos</NavLink>
-          <NavLink href="#projects">Projets</NavLink>
-          <NavLink href="#contact">Contact</NavLink>
-        </Nav>
-        {!isMenuOpen && <MenuButton onClick={toggleMenu}>Menu ☰</MenuButton>}
+        <NavbarHeader isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
       </HeaderTop>
       <StyledMobileNav
         as={motion.div}
@@ -115,8 +102,11 @@ const Header = () => {
         <NavLinkMobile href="#projects" onClick={() => setMenuOpen(false)}>
           Projets
         </NavLinkMobile>
-        <NavLinkMobile href="#contact" onClick={() => setMenuOpen(false)}>
-          Contact
+        <NavLinkMobile
+          href="/Cv_Armel_Steve_OUETCHOUA.pdf"
+          onClick={() => setMenuOpen(false)}
+        >
+          CV
         </NavLinkMobile>
       </StyledMobileNav>
       <Title style={titleProps}>

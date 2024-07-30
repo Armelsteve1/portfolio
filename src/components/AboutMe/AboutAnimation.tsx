@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-// import './styles.css';
 
 const draw = {
   hidden: { opacity: 0 },

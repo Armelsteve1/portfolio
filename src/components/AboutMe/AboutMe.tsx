@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from '../Navbar';
 import styled from 'styled-components';
 import TechnologyCard from './TechnologyCard';
 import { Technology } from './types';
@@ -137,7 +136,6 @@ const AboutMe: React.FC = () => {
 
   return (
     <>
-      <Navbar />
       <Section>
         <Header>
           <Title>
@@ -148,21 +146,27 @@ const AboutMe: React.FC = () => {
         <Content>
           <TextSection>
             <Description>
-              Bonjour, je m’appelle Armel Steve OUETCHOUA, je suis un
-              développeur fullstack passionné avec plus de 4 ans d'expérience
-              dans la création de solutions web innovantes. J'ai travaillé sur
-              divers projets allant de sites vitrines à des applications web
-              complexes. J'aime explorer de nouvelles technologies et appliquer
-              les meilleures pratiques pour créer des expériences utilisateur
-              optimales.
+              Bonjour, je suis Armel Steve OUETCHOUA, développeur fullstack
+              passionné avec plus de quatre ans d'expérience dans la création de
+              solutions web innovantes. Mon parcours professionnel m'a permis de
+              travailler sur une large gamme de projets, allant de sites
+              vitrines à des applications web complexes, me permettant d'affiner
+              mes compétences techniques et mon sens du design.
             </Description>
             <Description>
-              Ces 4 dernières années, j'ai eu l'occasion de travailler avec des
-              équipes incroyables sur des projets stimulants, qui m'ont permis
-              d'améliorer mes compétences techniques et mon sens du design. Mon
-              objectif est de continuer à apprendre et à partager mes
-              connaissances pour aider les entreprises à atteindre leurs
-              objectifs.
+              Je suis animé par une curiosité constante pour les nouvelles
+              technologies et une volonté d'adopter les meilleures pratiques
+              pour offrir des expériences utilisateur optimales. Ces dernières
+              années, j'ai eu le privilège de collaborer avec des équipes
+              exceptionnelles sur des projets stimulants, renforçant ma capacité
+              à innover et à résoudre des défis techniques.
+            </Description>
+            <Description>
+              Mon ambition est de continuer à apprendre, à évoluer, et à
+              partager mes connaissances pour aider les entreprises à atteindre
+              leurs objectifs. Je suis toujours à la recherche de nouvelles
+              opportunités pour créer des solutions web performantes et
+              impactantes.
             </Description>
           </TextSection>
           <ImageContainer>
