@@ -62,6 +62,7 @@ const Projects = () => {
       <CardContainer onScroll={handleScroll}>
         {projects.map((project, index: number) =>
           index < projects.length - 1 ? (
+            <LazyLoad key={project.id} height={550} offset={100}>
               <a
                 href={project.githubLink}
                 target="_blank"
@@ -92,6 +93,7 @@ const Projects = () => {
                   )}
                 </Card>
               </a>
+            </LazyLoad>
           ) : (
             <LockedCard
               key={project.id}
