@@ -1,7 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaLock, FaGithub } from 'react-icons/fa';
-import LazyLoad from 'react-lazyload';
 import {
   Card,
   CardContainer,
@@ -44,6 +43,13 @@ const Projects = () => {
   const [hoveredCardIndex, setHoveredCardIndex] = useState<number | null>(null);
   const [showScrollIndicator, setShowScrollIndicator] = useState(true);
 
+  useEffect(() => {
+    const container = document.getElementById('card-container');
+    if (container) {
+      container.scrollLeft = 0;
+    }
+  }, []);
+
   const handleScroll = (e: any) => {
     const container = e.target as HTMLDivElement;
     const maxScrollLeft = container.scrollWidth - container.clientWidth;
@@ -59,10 +65,9 @@ const Projects = () => {
         <p>SCROLLEZ</p>
         <div className="arrow" />
       </ScrollIndicator>
-      <CardContainer onScroll={handleScroll}>
+      <CardContainer id="card-container" onScroll={handleScroll}>
         {projects.map((project, index: number) =>
           index < projects.length - 1 ? (
-            <LazyLoad key={project.id} height={550} offset={100}>
               <a
                 href={project.githubLink}
                 target="_blank"
@@ -93,7 +98,6 @@ const Projects = () => {
                   )}
                 </Card>
               </a>
-            </LazyLoad>
           ) : (
             <LockedCard
               key={project.id}
