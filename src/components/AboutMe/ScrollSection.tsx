@@ -1,3 +1,5 @@
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
@@ -58,6 +60,8 @@ const CVButton = styled.a`
 `;
 
 const ScrollSection = () => {
+  const { t } = useTranslation();
+
   return (
     <Wrapper>
       <MovingTextContainer>
@@ -66,18 +70,18 @@ const ScrollSection = () => {
           animate={{ x: '100%' }}
           transition={{ duration: 10, ease: 'linear', repeat: Infinity }}
         >
-          Développeur Full-Stack
+          {t('scrollSection.developer')}
         </MovingText>
       </MovingTextContainer>
       <CTAWrapper>
         <p style={{ fontSize: '1.5rem', margin: '20px 0', color: '#fff' }}>
-          Intéressé par mon profil?
+          {t('scrollSection.interested')}
         </p>
         <CVButton
           href="/Cv_Armel_Steve_OUETCHOUA.pdf"
           download="Cv_Armel_Steve_OUETCHOUA.pdf"
         >
-          CV
+          {t('scrollSection.cvButton')}
         </CVButton>
       </CTAWrapper>
     </Wrapper>

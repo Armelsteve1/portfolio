@@ -40,7 +40,7 @@ export default function AboutAnimation() {
         variants={draw}
         custom={2}
       >
-        + de 4 ans de dev
+        + de 3 ans de dev
       </motion.text>
     </motion.svg>
   );

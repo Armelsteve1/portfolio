@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaLock, FaGithub } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 import {
   Card,
   CardContainer,
@@ -40,6 +41,7 @@ const projects = [
 ];
 
 const Projects = () => {
+  const { t } = useTranslation();
   const [hoveredCardIndex, setHoveredCardIndex] = useState<number | null>(null);
   const [showScrollIndicator, setShowScrollIndicator] = useState(true);
 
@@ -59,16 +61,17 @@ const Projects = () => {
 
   return (
     <ProjectsContainer>
-      <Subtitle>Mes Projets</Subtitle>
-      <Experience>Voici quelques projets récents que j'ai réalisés.</Experience>
+      <Subtitle>{t('myprojects.subtitle')}</Subtitle>
+      <Experience>{t('myprojects.experience')}</Experience>
       <ScrollIndicator visible={showScrollIndicator}>
-        <p>SCROLLEZ</p>
+        <p>{t('myprojects.scrollIndicator')}</p>
         <div className="arrow" />
       </ScrollIndicator>
       <CardContainer id="card-container" onScroll={handleScroll}>
         {projects.map((project, index: number) =>
           index < projects.length - 1 ? (
             <a
+              key={project.id}
               href={project.githubLink}
               target="_blank"
               rel="noopener noreferrer"
@@ -106,7 +109,9 @@ const Projects = () => {
               onMouseLeave={() => setHoveredCardIndex(null)}
             >
               {hoveredCardIndex === index && (
-                <div style={{ color: 'black' }}>Bientôt Disponible</div>
+                <div style={{ color: 'black' }}>
+                  {t('myprojects.comingSoon')}
+                </div>
               )}
               <FaLock className="lock-icon" />
             </LockedCard>

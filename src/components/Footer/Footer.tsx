@@ -1,4 +1,5 @@
 import { FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 import {
   FooterContainer,
   BackgroundCircle,
@@ -8,7 +9,10 @@ import {
   ContactText,
   FooterLinkedIn,
 } from './FooterStyle';
+
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <FooterContainer>
       <BackgroundCircle />
@@ -36,8 +40,8 @@ const Footer = () => {
       </FooterCenter>
       <CurvedBackground>
         <ContactText>
-          <p>N’hésitez pas à me contacter !</p>
-          <p>Je suis disponible pour un CDI. À bientôt ! 😊</p>
+          <p>{t('footer.contactUs')}</p>
+          <p>{t('footer.available')}</p>
         </ContactText>
       </CurvedBackground>
       <FooterLinkedIn>

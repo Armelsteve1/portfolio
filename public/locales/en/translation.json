@@ -1,0 +1,41 @@
+{
+  "headerTitle": "FULLSTACK",
+  "subtitle": "DEVELOPER",
+  "experienceText": "EXPERTISE WITH",
+  "about": "About Me",
+  "projects": "Projects",
+  "years": "YEARS IN DEV",
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "footer": "©Website coded by",
+    "menu": "Menu ☰"
+  },
+  "aboutMe": {
+    "header": "YOU WANT TO KNOW MORE ABOUT ME?",
+    "description1": "Hello, I am Armel Steve OUETCHOUA, a passionate fullstack developer with over three years of experience in creating innovative web solutions. My professional journey has allowed me to work on a wide range of projects, from showcase websites to complex web applications, enabling me to hone my technical skills and design sense.",
+    "description2": "I am driven by a constant curiosity for new technologies and a desire to adopt best practices to deliver optimal user experiences. In recent years, I have had the privilege of collaborating with exceptional teams on challenging projects, enhancing my ability to innovate and solve technical challenges.",
+    "description3": "My ambition is to continue learning, evolving, and sharing my knowledge to help businesses achieve their goals. I am always looking for new opportunities to create high-performing and impactful web solutions."
+  },
+  "cards": {
+    "master": "Master II",
+    "experience": "+3 years exp.",
+    "goodPractices": "Good Practices"
+  },
+  "scrollSection": {
+    "developer": "Full-Stack Developer",
+    "interested": "Interested in my profile?",
+    "cvButton": "CV"
+  },
+  "myprojects": {
+    "subtitle": "My Projects",
+    "experience": "Here are some recent projects I have worked on.",
+    "scrollIndicator": "SCROLL",
+    "comingSoon": "Coming Soon"
+  },
+  "footer": {
+    "contactUs": "Feel free to contact me!",
+    "available": "I am available for a full-time position. See you soon! 😊"
+  }
+}

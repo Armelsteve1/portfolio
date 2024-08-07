@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 import TechnologyCard from './TechnologyCard';
 import { Technology } from './types';
 import CardComponent from './CardComponent';
@@ -91,6 +92,8 @@ const Grid = styled.div`
 `;
 
 const AboutMe: React.FC = () => {
+  const { t } = useTranslation();
+
   const technologies: Technology[] = [
     {
       name: 'JavaScript',
@@ -139,35 +142,14 @@ const AboutMe: React.FC = () => {
       <Section>
         <Header>
           <Title>
-            <Highlight>VOUS</Highlight> VOULEZ EN SAVOIR PLUS <br /> SUR{' '}
-            <Highlight>MOI</Highlight> ?
+            <Highlight>{t('aboutMe.header')}</Highlight>
           </Title>
         </Header>
         <Content>
           <TextSection>
-            <Description>
-              Bonjour, je suis Armel Steve OUETCHOUA, développeur fullstack
-              passionné avec plus de quatre ans d'expérience dans la création de
-              solutions web innovantes. Mon parcours professionnel m'a permis de
-              travailler sur une large gamme de projets, allant de sites
-              vitrines à des applications web complexes, me permettant d'affiner
-              mes compétences techniques et mon sens du design.
-            </Description>
-            <Description>
-              Je suis animé par une curiosité constante pour les nouvelles
-              technologies et une volonté d'adopter les meilleures pratiques
-              pour offrir des expériences utilisateur optimales. Ces dernières
-              années, j'ai eu le privilège de collaborer avec des équipes
-              exceptionnelles sur des projets stimulants, renforçant ma capacité
-              à innover et à résoudre des défis techniques.
-            </Description>
-            <Description>
-              Mon ambition est de continuer à apprendre, à évoluer, et à
-              partager mes connaissances pour aider les entreprises à atteindre
-              leurs objectifs. Je suis toujours à la recherche de nouvelles
-              opportunités pour créer des solutions web performantes et
-              impactantes.
-            </Description>
+            <Description>{t('aboutMe.description1')}</Description>
+            <Description>{t('aboutMe.description2')}</Description>
+            <Description>{t('aboutMe.description3')}</Description>
           </TextSection>
           <ImageContainer>
             <img src="../aso_logo.webp" alt="A propos de moi" />
