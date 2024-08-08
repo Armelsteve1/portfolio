@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useSpring } from 'react-spring';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import {
   HeaderContainer,
   HeaderTop,
@@ -17,6 +18,7 @@ import {
 } from './HeaderStyles';
 import ScrollPrompt from './ScrollPrompt';
 import NavbarHeader from '../Navbar/NavbarHeader';
+import LanguageSelector from '../Navbar/LanguageSelector';
 
 const mobileMenuVariants = {
   open: {
@@ -40,6 +42,7 @@ const mobileMenuVariants = {
 const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   const toggleMenu = () => setMenuOpen(!isMenuOpen);
 
@@ -75,7 +78,6 @@ const Header = () => {
     }
 
     return () => {
-      document.body.style.overflow = 'auto';
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isMenuOpen]);
@@ -97,10 +99,10 @@ const Header = () => {
           <CloseButton onClick={toggleMenu}>✕</CloseButton>
         </NavHeader>
         <NavLinkMobile href="#about" onClick={() => setMenuOpen(false)}>
-          À propos
+          {t('about')}
         </NavLinkMobile>
         <NavLinkMobile href="#projects" onClick={() => setMenuOpen(false)}>
-          Projets
+          {t('projects')}
         </NavLinkMobile>
         <NavLinkMobile
           href="/Cv_Armel_Steve_OUETCHOUA.pdf"
@@ -108,14 +110,17 @@ const Header = () => {
         >
           CV
         </NavLinkMobile>
+        <NavLinkMobile onClick={() => setMenuOpen(false)}>
+          <LanguageSelector />
+        </NavLinkMobile>
       </StyledMobileNav>
       <Title style={titleProps}>
         <Picto src="../leftPillule.svg" alt="Picto" />
-        DÉVELOPPEUR
+        {t('headerTitle')}
       </Title>
-      <Subtitle style={subtitleProps}>FULLSTACK</Subtitle>
+      <Subtitle style={subtitleProps}>{t('subtitle')}</Subtitle>
       <Experience style={experienceProps}>
-        UNE EXPERTISE DE <Highlight>+ 4 ANS DANS LE DEV</Highlight>
+        {t('experienceText')} <Highlight>+ 3 {t('years')}</Highlight>
       </Experience>
       <ScrollPrompt />
     </HeaderContainer>

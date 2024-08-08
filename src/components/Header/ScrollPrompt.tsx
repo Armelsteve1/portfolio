@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Character,
   Circle,
@@ -8,8 +9,10 @@ import {
 } from './HeaderStyles';
 
 const ScrollPrompt: React.FC = () => {
-  const text = ' Scrollez pour découvrir ';
+  const { t } = useTranslation();
+  const text = t('scrollPrompt');
   const characters = text.split('');
+
   return (
     <ScrollContainer
       onClick={() =>
@@ -22,7 +25,9 @@ const ScrollPrompt: React.FC = () => {
             <Character
               key={index}
               style={{
-                transform: `rotate(${index * (360 / characters.length) - 90}deg) translate(70px) rotate(90deg)`,
+                transform: `rotate(${
+                  index * (360 / characters.length) - 90
+                }deg) translate(70px) rotate(90deg)`,
               }}
             >
               {char}

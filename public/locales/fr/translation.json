@@ -1,0 +1,42 @@
+{
+  "headerTitle": "DÉVELOPPEUR",
+  "subtitle": "FULLSTACK",
+  "experienceText": "UNE EXPERTISE DE",
+  "about": "À propos de moi",
+  "projects": "Projets",
+  "years": "ANS DANS LE DEV",
+  "scrollPrompt": "Scrollez pour découvrir",
+  "navbar": {
+    "home": "Accueil",
+    "about": "À propos",
+    "projects": "Projets",
+    "footer": "©Site codé par",
+    "menu": "Menu ☰"
+  },
+  "aboutMe": {
+    "header": "VOUS VOULEZ EN SAVOIR PLUS SUR MOI?",
+    "description1": "Bonjour, je suis Armel Steve OUETCHOUA, développeur fullstack passionné avec plus de trois ans d'expérience dans la création de solutions web innovantes. Mon parcours professionnel m'a permis de travailler sur une large gamme de projets, allant de sites vitrines à des applications web complexes, me permettant d'affiner mes compétences techniques et mon sens du design.",
+    "description2": "Je suis animé par une curiosité constante pour les nouvelles technologies et une volonté d'adopter les meilleures pratiques pour offrir des expériences utilisateur optimales. Ces dernières années, j'ai eu le privilège de collaborer avec des équipes exceptionnelles sur des projets stimulants, renforçant ma capacité à innover et à résoudre des défis techniques.",
+    "description3": "Mon ambition est de continuer à apprendre, à évoluer, et à partager mes connaissances pour aider les entreprises à atteindre leurs objectifs. Je suis toujours à la recherche de nouvelles opportunités pour créer des solutions web performantes et impactantes."
+  },
+  "cards": {
+    "master": "Master II",
+    "experience": "+3 ans d'exp.",
+    "goodPractices": "Bonne Pratique"
+  },
+  "scrollSection": {
+    "developer": "Développeur Full-Stack",
+    "interested": "Intéressé par mon profil?",
+    "cvButton": "CV"
+  },
+  "myprojects": {
+    "subtitle": "Mes Projets",
+    "experience": "Voici quelques projets récents que j'ai réalisés.",
+    "scrollIndicator": "SCROLLEZ",
+    "comingSoon": "Bientôt Disponible"
+  },
+  "footer": {
+    "contactUs": "N’hésitez pas à me contacter !",
+    "available": "Je suis disponible pour un CDI. À bientôt ! 😊"
+  }
+}

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
@@ -51,33 +52,37 @@ const Text = styled(motion.h3)`
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 `;
 
-const cards = [
-  { text: 'Master II', icon: '/aso_logo.webp' },
-  { text: "+4 ans d'exp.", icon: '/aso_logo.webp' },
-  { text: 'Bonne Pratique', icon: '/aso_logo.webp' },
-];
+const CardComponent = () => {
+  const { t } = useTranslation();
 
-const CardComponent = () => (
-  <CardGrid>
-    {cards.map((card, index) => (
-      <Card
-        key={index}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: index * 0.3, duration: 0.5 }}
-        whileHover={{ scale: 1.1 }}
-      >
-        <PinIcon
-          style={{ backgroundImage: `url(${card.icon})` }}
-          whileHover={{ scale: 1.2 }}
-          transition={{ duration: 0.3 }}
-        />
-        <Text whileHover={{ scale: 1.2 }} transition={{ duration: 0.3 }}>
-          {card.text}
-        </Text>
-      </Card>
-    ))}
-  </CardGrid>
-);
+  const cards = [
+    { text: t('cards.master'), icon: '/aso_logo.webp' },
+    { text: t('cards.experience'), icon: '/aso_logo.webp' },
+    { text: t('cards.goodPractices'), icon: '/aso_logo.webp' },
+  ];
+
+  return (
+    <CardGrid>
+      {cards.map((card, index) => (
+        <Card
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: index * 0.3, duration: 0.5 }}
+          whileHover={{ scale: 1.1 }}
+        >
+          <PinIcon
+            style={{ backgroundImage: `url(${card.icon})` }}
+            whileHover={{ scale: 1.2 }}
+            transition={{ duration: 0.3 }}
+          />
+          <Text whileHover={{ scale: 1.2 }} transition={{ duration: 0.3 }}>
+            {card.text}
+          </Text>
+        </Card>
+      ))}
+    </CardGrid>
+  );
+};
 
 export default CardComponent;

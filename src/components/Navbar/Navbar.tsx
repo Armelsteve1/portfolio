@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { FooterInfo, Logo, NavbarContainer, NavLinks } from './NavbarStyle';
+
 const Navbar = () => {
+  const { t } = useTranslation();
   const [activeLink, setActiveLink] = useState<string>('header');
   const [showNavbar, setShowNavbar] = useState(true);
 
@@ -58,25 +61,25 @@ const Navbar = () => {
           className={`nav-link ${activeLink === 'header' ? 'active' : ''}`}
           onClick={(e) => handleLinkClick('header', e)}
         >
-          Accueil
+          {t('navbar.home')}
         </a>
         <a
           href="#about"
           className={`nav-link ${activeLink === 'about' ? 'active' : ''}`}
           onClick={(e) => handleLinkClick('about', e)}
         >
-          À propos
+          {t('navbar.about')}
         </a>
         <a
           href="#projects"
           className={`nav-link ${activeLink === 'projects' ? 'active' : ''}`}
           onClick={(e) => handleLinkClick('projects', e)}
         >
-          Projets
+          {t('navbar.projects')}
         </a>
       </NavLinks>
       <FooterInfo>
-        ©Website coded by
+        {t('navbar.footer')}
         <a href="https://www.linkedin.com/in/armel-steve-ouetchoua-a1467b225/">
           Armel Steve
         </a>
