@@ -80,20 +80,24 @@ const LanguageSelector = () => {
     setDropdownOpen(false);
   };
 
-  const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
+  const handleMouseEnter = () => {
+    setDropdownOpen(true);
   };
 
-  const handleClickOutside = (event: MouseEvent) => {
-    if (
-      dropdownRef.current &&
-      !dropdownRef.current.contains(event.target as Node)
-    ) {
-      setDropdownOpen(false);
-    }
+  const handleMouseLeave = () => {
+    setDropdownOpen(false);
   };
 
   useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setDropdownOpen(false);
+      }
+    };
+
     if (dropdownOpen) {
       document.addEventListener('mousedown', handleClickOutside);
     } else {
@@ -106,13 +110,17 @@ const LanguageSelector = () => {
   }, [dropdownOpen]);
 
   return (
-    <LanguageSelectorContainer>
-      <LanguageButton onClick={toggleDropdown}>
+    <LanguageSelectorContainer
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      ref={dropdownRef}
+    >
+      <LanguageButton>
         <FiGlobe style={{ marginRight: '8px' }} />
         {i18n.language === 'en' ? 'English' : 'Français'}
         <FaChevronDown style={{ marginLeft: '8px' }} />
       </LanguageButton>
-      <Dropdown ref={dropdownRef} open={dropdownOpen}>
+      <Dropdown open={dropdownOpen}>
         <DropdownItem onClick={() => changeLanguage('fr')}>
           <FlagIcon>
             <FiFlag />

@@ -32,8 +32,7 @@ const NavbarHeader = ({ isMenuOpen, toggleMenu }: any) => {
         >
           {t('navbar.cv')}
         </NavLink>
-        <NavLink>
-          {' '}
+        <NavLink as="div">
           <LanguageSelector />
         </NavLink>
       </Nav>

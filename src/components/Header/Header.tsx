@@ -18,6 +18,7 @@ import {
 } from './HeaderStyles';
 import ScrollPrompt from './ScrollPrompt';
 import NavbarHeader from '../Navbar/NavbarHeader';
+import LanguageSelector from '../Navbar/LanguageSelector'; // Assurez-vous d'importer le sélecteur de langue ici
 
 const mobileMenuVariants = {
   open: {
@@ -77,7 +78,6 @@ const Header = () => {
     }
 
     return () => {
-      document.body.style.overflow = 'auto';
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isMenuOpen]);
@@ -109,6 +109,9 @@ const Header = () => {
           onClick={() => setMenuOpen(false)}
         >
           CV
+        </NavLinkMobile>
+        <NavLinkMobile onClick={() => setMenuOpen(false)}>
+          <LanguageSelector />
         </NavLinkMobile>
       </StyledMobileNav>
       <Title style={titleProps}>
