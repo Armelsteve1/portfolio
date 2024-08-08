@@ -5,6 +5,7 @@
   "about": "About Me",
   "projects": "Projects",
   "years": "YEARS IN DEV",
+  "scrollPrompt": "Scroll to discover",
   "navbar": {
     "home": "Home",
     "about": "About",

@@ -18,7 +18,7 @@ import {
 } from './HeaderStyles';
 import ScrollPrompt from './ScrollPrompt';
 import NavbarHeader from '../Navbar/NavbarHeader';
-import LanguageSelector from '../Navbar/LanguageSelector'; // Assurez-vous d'importer le sélecteur de langue ici
+import LanguageSelector from '../Navbar/LanguageSelector';
 
 const mobileMenuVariants = {
   open: {
