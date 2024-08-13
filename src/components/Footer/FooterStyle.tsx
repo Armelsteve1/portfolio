@@ -117,7 +117,7 @@ export const ContactText = styled.div`
   }
 
   @media (max-width: 768px) {
-    font-size: 16px;
+    font-size: 14px;
   }
 `;
 
@@ -127,7 +127,7 @@ export const CurvedBackground = styled.div`
   width: 100%;
   height: 300px;
   background: #121111;
-  clip-path: ellipse(50% 100% at 50% 100%);
+  clip-path: ellipse(63% 100% at 50% 100%);
   z-index: 1;
   display: flex;
   align-items: center;
