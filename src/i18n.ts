@@ -9,7 +9,7 @@ i18n
   .use(initReactI18next)
   .init({
     supportedLngs: ['en', 'fr'],
-    fallbackLng: 'en',
+    fallbackLng: 'fr',
     debug: true,
     detection: {
       order: [
