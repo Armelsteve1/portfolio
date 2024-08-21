@@ -74,19 +74,23 @@ const LanguageSelector = () => {
   const { i18n } = useTranslation();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
     setDropdownOpen(false);
   };
 
-  const handleMouseEnter = () => {
-    setDropdownOpen(true);
-  };
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+      setDropdownOpen(window.innerWidth <= 768);
+    };
 
-  const handleMouseLeave = () => {
-    setDropdownOpen(false);
-  };
+    handleResize(); // Initial check
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -98,7 +102,7 @@ const LanguageSelector = () => {
       }
     };
 
-    if (dropdownOpen) {
+    if (dropdownOpen && !isMobile) {
       document.addEventListener('mousedown', handleClickOutside);
     } else {
       document.removeEventListener('mousedown', handleClickOutside);
@@ -107,33 +111,45 @@ const LanguageSelector = () => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [dropdownOpen]);
+  }, [dropdownOpen, isMobile]);
 
   return (
-    <LanguageSelectorContainer
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      ref={dropdownRef}
-    >
-      <LanguageButton>
-        <FiGlobe style={{ marginRight: '8px' }} />
-        {i18n.language === 'en' ? 'English' : 'Français'}
-        <FaChevronDown style={{ marginLeft: '8px' }} />
-      </LanguageButton>
-      <Dropdown open={dropdownOpen}>
-        <DropdownItem onClick={() => changeLanguage('fr')}>
+    <LanguageSelectorContainer ref={dropdownRef}>
+      {isMobile ? (
+        <LanguageButton onClick={() => changeLanguage(i18n.language === 'en' ? 'fr' : 'en')}>
+          <FiGlobe style={{ marginRight: '8px' }} />
           <FlagIcon>
             <FiFlag />
           </FlagIcon>
-          Français
-        </DropdownItem>
-        <DropdownItem onClick={() => changeLanguage('en')}>
-          <FlagIcon>
-            <FiFlag />
-          </FlagIcon>
-          English
-        </DropdownItem>
-      </Dropdown>
+          {i18n.language === 'en' ? 'Français' : 'English'}
+        </LanguageButton>
+      ) : (
+        <>
+          <LanguageButton onClick={() => setDropdownOpen(!dropdownOpen)}>
+            <FiGlobe style={{ marginRight: '8px' }} />
+            {i18n.language === 'en' ? 'English' : 'Français'}
+            <FaChevronDown style={{ marginLeft: '8px' }} />
+          </LanguageButton>
+          <Dropdown open={dropdownOpen}>
+            {i18n.language !== 'fr' && (
+              <DropdownItem onClick={() => changeLanguage('fr')}>
+                <FlagIcon>
+                  <FiFlag />
+                </FlagIcon>
+                Français
+              </DropdownItem>
+            )}
+            {i18n.language !== 'en' && (
+              <DropdownItem onClick={() => changeLanguage('en')}>
+                <FlagIcon>
+                  <FiFlag />
+                </FlagIcon>
+                English
+              </DropdownItem>
+            )}
+          </Dropdown>
+        </>
+      )}
     </LanguageSelectorContainer>
   );
 };
