@@ -116,7 +116,9 @@ const LanguageSelector = () => {
   return (
     <LanguageSelectorContainer ref={dropdownRef}>
       {isMobile ? (
-        <LanguageButton onClick={() => changeLanguage(i18n.language === 'en' ? 'fr' : 'en')}>
+        <LanguageButton
+          onClick={() => changeLanguage(i18n.language === 'en' ? 'fr' : 'en')}
+        >
           <FiGlobe style={{ marginRight: '8px' }} />
           <FlagIcon>
             <FiFlag />
